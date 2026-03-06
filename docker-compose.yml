@@ -1,0 +1,29 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: site-nico-postgres
+    environment:
+      POSTGRES_DB: site_nico
+      POSTGRES_USER: matteo
+      POSTGRES_PASSWORD: 3z5EJDfimdE4rAC6
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: site-nico-app
+    environment:
+      NODE_ENV: production
+      PAYLOAD_SECRET: 15TG5T44TD646564F4F7F112B2GFDE45
+      DATABASE_URL: postgres://matteo:3z5EJDfimdE4rAC6@postgres:5432/site_nico
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    volumes:
+      - ./uploads:/app/uploads
+
+volumes:
+  pgdata:

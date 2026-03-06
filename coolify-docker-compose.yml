@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  coolify:
+    image: ghcr.io/coollabsio/coolify:latest
+    container_name: coolify
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - coolify-storage:/data
+    environment:
+      - COOLIFY_APP_ID=1
+      - COOLIFY_SECRET_KEY=supersecret
+      - COOLIFY_DATABASE_URL=sqlite:/data/coolify.db
+
+volumes:
+  coolify-storage:
