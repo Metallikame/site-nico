@@ -6,10 +6,10 @@ import {buildConfig} from 'payload'
 import {lexicalEditor} from '@payloadcms/richtext-lexical'
 import {postgresAdapter} from '@payloadcms/db-postgres'
 
-import { Posts } from './src/collections/Posts.ts'
-import { Users } from './src/collections/Users.ts'
-import { Media } from './src/collections/Media'
-import { Projects } from './src/collections/Projects'
+import {Posts} from './src/collections/Posts.ts'
+import {Users} from './src/collections/Users.ts'
+import {Media} from './src/collections/Media.ts'
+import {Projects} from './src/collections/Projects.ts'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -29,6 +29,7 @@ export default buildConfig({
         pool: {
             connectionString: process.env.DATABASE_URL,
         },
+        migrationDir: './src/migrations',
     }),
 
     sharp,

@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "payload:importmap": "node --import tsx ./node_modules/payload/dist/bin/index.js generate:importmap --config payload.config.ts"
+    "payload:importmap": "node --import tsx ./node_modules/payload/dist/bin/index.js generate:importmap --config payload.config.ts",
+    "payload:migrate": "node --import tsx ./node_modules/payload/dist/bin/index.js migrate --config payload.config.ts",
+    "payload:migrate:create": "node --import tsx ./node_modules/payload/dist/bin/index.js migrate:create --config payload.config.ts",
+    "ci": "npm run payload:migrate && npm run build"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "^3.79.0",
@@ -25,6 +28,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "^16.1.6",
     "tailwindcss": "^4",
